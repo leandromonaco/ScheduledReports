@@ -4,9 +4,11 @@ using AutomationToolkit.Fortify;
 using Hangfire;
 using Hangfire.SqlServer;
 using Microsoft.Extensions.Configuration;
+using ScheduledTasks.Server.Model;
 using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ScheduledTasks
@@ -67,8 +69,7 @@ namespace ScheduledTasks
                 {
                     var versions = await _fortifyTestRepository2.GetProjectVersionsAsync(project.Id);
 
-                    var sb = new StringBuilder();
-                    sb.Append("[");
+                    var appSecItems = new List<AppSecItem>();
 
                     foreach (var projectVersion in versions)
                     {
@@ -76,14 +77,27 @@ namespace ScheduledTasks
 
                         foreach (var issue in issues)
                         {
-                            var jsonBody = $"{{ \"UploadDate\" :\"{DateTime.Now.Date.ToString("yyyy-MM-dd")}\", \"UAID\" :\"{project.Name} {project.Description}\", \"Version\" :\"{projectVersion.Name}\", \"Status\" :\"{issue.IssueStatus}\", \"Category\" :\"{issue.IssueName}\", \"Severity\" :\"{issue.friority}\", \"Source\" :\"{issue.EngineType}\", \"Tag\" :\"{issue.PrimaryTag}\", \"IsRedBall\" :\"{IsRedBall(issue.IssueName)}\" }},";
-                            sb.Append(jsonBody);
+                            var appSecItem = new AppSecItem() 
+                            {
+                                UploadDate = DateTime.Now.Date.ToString("yyyy-MM-dd"),
+                                UAID = $"{project.Name} {project.Description}",
+                                Version = projectVersion.Name,
+                                Status = issue.IssueStatus,
+                                Category = issue.IssueName,
+                                Severity = issue.friority,
+                                Source = issue.EngineType,
+                                Tag = issue.PrimaryTag,
+                                IsRedBall = IsRedBall(issue.IssueName)
+                            };
+
+                            appSecItems.Add(appSecItem);
                         }
                     }
 
-                    sb.Append("]");
+                    var jsonBody = JsonSerializer.Serialize(appSecItems);
+
                     var genericRepo = new GenericRepository();
-                    await genericRepo.PostAsync(_configuration["PowerBI:Url"], sb.ToString());
+                    await genericRepo.PostAsync(_configuration["PowerBI:Url"], jsonBody);
                 }
             }
             catch (Exception)
