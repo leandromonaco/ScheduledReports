@@ -7,13 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutomationConnectors.Common" Version="5.0.1" />
+    <PackageReference Include="AutomationConnectors.Fortify" Version="5.0.1" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="5.0.0" />
-    <PackageReference Include="AutomationToolkit.Common" Version="3.1.0" />
-    <PackageReference Include="AutomationToolkit.Fortify" Version="3.1.0" />
-    <PackageReference Include="Hangfire.AspNetCore" Version="1.7.18" />
-    <PackageReference Include="Hangfire.Core" Version="1.7.18" />
-    <PackageReference Include="Hangfire.SqlServer" Version="1.7.18" />
-    <PackageReference Include="Hangfire.SqlServer.MSMQ" Version="1.7.18" />
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.7.19" />
+    <PackageReference Include="Hangfire.Core" Version="1.7.19" />
+    <PackageReference Include="Hangfire.SqlServer" Version="1.7.19" />
+    <PackageReference Include="Hangfire.SqlServer.MSMQ" Version="1.7.19" />
   </ItemGroup>
 
   <ItemGroup>
