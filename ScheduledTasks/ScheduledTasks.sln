@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduledTasks.Server", "ScheduledTasks.Server.csproj", "{6091AA48-DB47-434D-A75B-01B2564DBAC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScheduledTasks.FortifyReport", "ScheduledTasks.FortifyReport.csproj", "{6091AA48-DB47-434D-A75B-01B2564DBAC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScheduledTasks.CertificateChecker", "..\ScheduledTasks.CertificateChecker\ScheduledTasks.CertificateChecker.csproj", "{C4568FF3-330D-42D0-B222-6D6FFD32289E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{6091AA48-DB47-434D-A75B-01B2564DBAC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6091AA48-DB47-434D-A75B-01B2564DBAC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6091AA48-DB47-434D-A75B-01B2564DBAC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4568FF3-330D-42D0-B222-6D6FFD32289E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4568FF3-330D-42D0-B222-6D6FFD32289E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4568FF3-330D-42D0-B222-6D6FFD32289E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4568FF3-330D-42D0-B222-6D6FFD32289E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
