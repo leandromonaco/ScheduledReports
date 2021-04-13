@@ -7,14 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutomationConnectors.AzDevOps" Version="5.0.3" />
-    <PackageReference Include="AutomationConnectors.Common" Version="5.0.1" />
-    <PackageReference Include="AutomationConnectors.Fortify" Version="5.0.3" />
+    <None Remove="ReportHelper.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IntegrationConnectors.Fortify" Version="5.0.9" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="5.0.0" />
-    <PackageReference Include="Hangfire.AspNetCore" Version="1.7.19" />
-    <PackageReference Include="Hangfire.Core" Version="1.7.19" />
-    <PackageReference Include="Hangfire.SqlServer" Version="1.7.19" />
-    <PackageReference Include="Hangfire.SqlServer.MSMQ" Version="1.7.19" />
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.7.20" />
+    <PackageReference Include="Hangfire.Core" Version="1.7.20" />
+    <PackageReference Include="Hangfire.SqlServer" Version="1.7.20" />
+    <PackageReference Include="Hangfire.SqlServer.MSMQ" Version="1.7.20" />
   </ItemGroup>
 
   <ItemGroup>

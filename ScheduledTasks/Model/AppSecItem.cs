@@ -13,5 +13,7 @@ namespace ScheduledTasks.Server.Model
         public string Source { get; set; }
         public string Tag { get; set; }
         public bool IsRedBall { get; set; }
+        public string OWASPCategory { get; set; }
+        public string File { get; set; }
     }
 }
