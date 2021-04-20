@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -26,7 +27,7 @@ namespace ScheduledTasks.FortifyReport
             {
                 var timeoutInMinutes = 10;
                 var url = configuration["Fortify:Url"];
-                var key = configuration["Fortify:Key"];
+                var key = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{configuration["Fortify:User"]}:{configuration["Fortify:Password"]}"));
 
                 _fortifyConnector = new FortifyConnector(url, key, AuthenticationType.Basic)
                 {
