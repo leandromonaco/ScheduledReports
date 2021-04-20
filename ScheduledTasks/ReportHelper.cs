@@ -17,7 +17,7 @@ namespace ScheduledTasks.FortifyReport
     {
         static FortifyConnector _fortifyConnector;
 
-        internal static async Task UpdateReport(string projectName, string version, IConfiguration configuration)
+        internal static async Task UpdateReportAsync(string projectName, string version, IConfiguration configuration)
         {
             var genericRepo = new BaseConnector(null, null, AuthenticationType.None);
             var reportStatus = new List<ReportExecutionStatus>();
