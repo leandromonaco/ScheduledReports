@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ScheduledTasks.Server.Model
+﻿namespace AutomatedTasks.ImportFileGenerator.Model
 {
     public class AppSecItem
     {

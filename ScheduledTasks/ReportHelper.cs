@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using ScheduledTasks.Server.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -63,6 +64,7 @@ namespace ScheduledTasks.FortifyReport
 
                                 var appSecItem = new AppSecItem()
                                 {
+                                    Id = issue.IssueInstanceId,
                                     UploadDate = DateTime.Now.Date.ToString("yyyy-MM-dd"),
                                     UAID = $"{project.Name} {project.Description}",
                                     Version = projectVersion.Name,
@@ -73,7 +75,9 @@ namespace ScheduledTasks.FortifyReport
                                     Tag = issue.PrimaryTag,
                                     IsRedBall = IsRedBall(issue) || issueDetails.IsOWASPTopTen,
                                     OWASPCategory = issueDetails.OWASPCategory,
-                                    File = issue.PrimaryLocation
+                                    File = issue.PrimaryLocation,
+                                    LineNumber = issue.LineNumber,
+                                    ScanStatus = issue.ScanStatus
                                 };
 
                                 appSecItems.Add(appSecItem);
@@ -81,6 +85,9 @@ namespace ScheduledTasks.FortifyReport
                         }
 
                         var jsonBody = JsonSerializer.Serialize(appSecItems);
+
+                        //Save file for further analysis
+                        File.WriteAllText($@"C:\Temp\UVMS\{DateTime.Now.Date.ToString("yyyy-MM-dd")} {projectVersion.Name} {project.Name} {project.Description}.json", jsonBody);
 
                         await genericRepo.PostWithJsonAsync(configuration["PowerBI:UVMSDashboardUrl"], jsonBody);
 
